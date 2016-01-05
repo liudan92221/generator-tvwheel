@@ -28,6 +28,10 @@ gulp.task('default', function() {
   });
 });
 
+// 启动server
+gulp.task('server', function() {
+  gulpMap['server'](options);
+});
 
 // 启动test
 gulpMap['test']();

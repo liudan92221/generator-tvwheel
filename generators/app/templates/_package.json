@@ -1,5 +1,5 @@
 {
-  "name": "<%= packageName %>",
+  "name": "@ali/alitv-<%= packageName %>",
   "version": "<%= version %>",
   "description": "",
   "author": {
