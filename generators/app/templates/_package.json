@@ -17,7 +17,7 @@
   "babel": {
     "loose": ["es6.classes"]
   },
-  "license": "ISC",
+  "license": "",
   "keywords": [
     "<%= projectName %>"
   ],

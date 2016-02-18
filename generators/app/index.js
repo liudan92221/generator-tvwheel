@@ -107,11 +107,11 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     app: function () {
-      this.fs.copy(
+      this.template(
         this.templatePath('index.js'),
         this.destinationPath('index.js')
       );
-      this.fs.copy(
+      this.template(
         this.templatePath('mIndex.js'),
         this.destinationPath('mIndex.js')
       );
@@ -139,11 +139,20 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('README.md'),
         this.destinationPath('README.md')
       );
+      this.template(
+        this.templatePath('lib/index.js'),
+        this.destinationPath('lib/index.js')
+      );
 
-      this.mkdir('lib');
+      //this.mkdir('lib');
       this.mkdir('doc');
       this.mkdir('build');
       this.mkdir('test');
+
+      this.template(
+        this.templatePath('lib/index.js'),
+        this.destinationPath('lib/index.js')
+      );
     },
 
     projectfiles: function () {
