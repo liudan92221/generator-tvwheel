@@ -139,12 +139,12 @@ module.exports = yeoman.generators.Base.extend({
         this.templatePath('README.md'),
         this.destinationPath('README.md')
       );
-      this.template(
-        this.templatePath('lib/index.js'),
-        this.destinationPath('lib/index.js')
-      );
+      //this.template(
+      //  this.templatePath('lib'),
+      //  this.destinationPath('lib')
+      //);
 
-      //this.mkdir('lib');
+      this.mkdir('lib');
       this.mkdir('doc');
       this.mkdir('build');
       this.mkdir('test');

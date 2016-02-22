@@ -1,4 +1,4 @@
-//import {<%= projectName %>} from './lib/index.js'
+//import {<%= projectName %>} from './lib/mIndex.js'
 //
 //window.alitv = window.alitv || {}
 //window.alitv.<%= projectName %> = <%= projectName %>
