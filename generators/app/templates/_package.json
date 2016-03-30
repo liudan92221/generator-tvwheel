@@ -27,10 +27,9 @@
     "lib/"
   ],
   "dependencies": {
-    "@ali/alitv-react-base": "~1.0.1",
     "@ali/atv-engine": "~1.0.7",
-    "react": "~0.14.7",
-    "react-dom": "~0.14.7"
+    "@ali/alitv-display-base": "~1.0.0",
+    "@ali/alitv-interactive-base": "~1.0.0"
   },
   "devDependencies": {
     "babel": "^5.8.21",
