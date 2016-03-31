@@ -28,8 +28,8 @@
   ],
   "dependencies": {
     "@ali/atv-engine": "~1.0.7",
-    "@ali/alitv-display-base": "~1.0.0",
-    "@ali/alitv-interactive-base": "~1.0.0"
+    "@ali/alitv-display-base": "~1.0.3",
+    "@ali/alitv-interactive-base": "~1.0.1"
   },
   "devDependencies": {
     "babel": "^5.8.21",

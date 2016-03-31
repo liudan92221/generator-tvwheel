@@ -56,6 +56,12 @@ module.exports = yeoman.generators.Base.extend({
 
       var prompts = [
         {
+          name: 'type',
+          message: 'Type of Project?(0:普通,1:展示,2:交互)',
+          default: '0',
+          warning: ''
+        },
+        {
           name: 'projectName',
           message: 'Name of Project?',
           default: fileName,
@@ -95,6 +101,7 @@ module.exports = yeoman.generators.Base.extend({
       }
 
       this.prompt(prompts, function (props) {
+        this.type = props.type;
         this.packageName = props.projectName;// project-name
         this.projectName = parseMojoName(this.packageName); //ProjectName
         this.author = props.author;
@@ -149,10 +156,22 @@ module.exports = yeoman.generators.Base.extend({
       this.mkdir('build');
       this.mkdir('test');
 
-      this.template(
-        this.templatePath('lib/index.js'),
-        this.destinationPath('lib/index.js')
-      );
+      if (this.type == 1) {
+        this.template(
+          this.templatePath('lib/index-1.js'),
+          this.destinationPath('lib/index.js')
+        );
+      } else if (this.type == 2) {
+        this.template(
+          this.templatePath('lib/index-2.js'),
+          this.destinationPath('lib/index.js')
+        );
+      } else {
+        this.template(
+          this.templatePath('lib/index.js'),
+          this.destinationPath('lib/index.js')
+        );
+      }
     },
 
     projectfiles: function () {
