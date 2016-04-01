@@ -27,7 +27,7 @@
     "lib/"
   ],
   "dependencies": {
-    "@ali/atv-engine": "~1.0.7",
+    "@ali/atv-engine": "~1.1.4",
     "@ali/alitv-display-base": "~1.0.3",
     "@ali/alitv-interactive-base": "~1.0.1"
   },
