@@ -16,7 +16,7 @@ export class <%= projectName %> extends Interactive {
    *
    */
   getName() {
-    return null
+    return '<%= projectName %>'
   }
   /**
    * 需重写

@@ -2,7 +2,7 @@ const Component = require('@ali/alitv-component-base')
 
 export class <%= projectName %> extends Component {
   constructor(obj) {
-
+    super(obj)
   }
   /**
    * 需重写
@@ -10,7 +10,7 @@ export class <%= projectName %> extends Component {
    *
    */
   getName() {
-    return null
+    return '<%= projectName %>'
   }
   /**
    * 需重写

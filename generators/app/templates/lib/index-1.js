@@ -19,7 +19,7 @@ export class <%= projectName %> extends Display {
    *
    */
   getName() {
-    return null
+    return '<%= projectName %>'
   }
   /**
    * 需重写
