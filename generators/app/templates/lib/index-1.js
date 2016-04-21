@@ -46,12 +46,9 @@ export class <%= projectName %> extends Display {
    * 数据格式
    *
    *  {
-            id: this.__id__,
+            id: this.getId(),
             component: this,
             name: this.getName(),
-            callback: function() {
-              _this.receipt()
-            },
             data: this.exportData()
           }
    */

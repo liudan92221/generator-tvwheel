@@ -5,7 +5,9 @@ export class <%= projectName %> extends Interactive {
     super(obj)
   }
   initView(style, data) {
-    return document.createElement('div')
+    const node = document.createElement('div')
+    node.setAttribute('data-role', 'Widget')
+    return node
   }
   render(node, style, data) {
     node.innerHTML = ''
@@ -43,12 +45,9 @@ export class <%= projectName %> extends Interactive {
    * 数据格式
    *
    *  {
-            id: this.__id__,
+            id: this.getId(),
             component: this,
             name: this.getName(),
-            callback: function() {
-              _this.receipt()
-            },
             data: this.exportData()
           }
    */
