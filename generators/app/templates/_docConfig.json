@@ -7,6 +7,6 @@
   },
   "opts": {
     "encoding": "utf8",
-    "destination": "./doc"
+    "destination": "./build/doc"
   }
 }

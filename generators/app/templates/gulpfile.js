@@ -1,6 +1,7 @@
 var wrench = require('wrench');
 var gulp = require('gulp');
 var del = require('del');
+var jsdoc = require('gulp-jsdoc3');
 
 var pkg = require('./package');
 
@@ -11,7 +12,7 @@ var options = {
   main_less: 'index.less',
   main_css: 'index.css',
   main_html: 'index.html',
-  doc_config: require('./_docConfig.json'),
+  doc_config: require('./docConfig.json'),
   pkg: pkg
 };
 
@@ -32,7 +33,8 @@ gulp.task('default', function() {
 
 // 启动server
 gulp.task('doc', function() {
-  gulpMap['doc'](options);
+  gulp.src(['README.md','lib/index.js'], {read: false})
+    .pipe(jsdoc(options.doc_config));
 });
 
 // 启动server

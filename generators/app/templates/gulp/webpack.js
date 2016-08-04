@@ -1,8 +1,9 @@
 "use strict";
 
 var gulp = require('gulp');
-var gutil = require('gulp-util');
-var webpack = require('webpack');
+// var gutil = require('gulp-util');
+var webpack = require('webpack-stream');
+var wb = require('webpack');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var path = require('path');
@@ -23,14 +24,14 @@ module.exports = function(options, file) {
   var entry = {};
   var exists = fs.existsSync(path.join(__dirname, '../'+file+'.js'));
   if (exists) {
-    entry[file] = './'+file+'.js';
+    entry[file] = path.join(__dirname, '../'+file+'.js');
   }
   // webpack配置
   var cfg = {
     cache: true,
     entry: entry,
     output: {
-      path: './build',
+      path: path.join(__dirname, '../build'),
       filename: '[name].js',
       chunkFilename: '[chunkhash].js'
     },
@@ -41,8 +42,12 @@ module.exports = function(options, file) {
           loader: 'style!css'
         },
         {
+          // exclude: /(node_modules|bower_components)/,
           test: /\.js$/,
-          loader: 'babel'
+          loader: 'babel',
+          query: {
+            presets: ['es2015', 'stage-0']
+          }
         },
         {
           test: /\.less$/,
@@ -50,34 +55,49 @@ module.exports = function(options, file) {
         }
       ]
     },
-    devtool: 'source-map',
-    plugins: [new webpack.optimize.DedupePlugin()]
+    devtool: 'inline-source-map',
+    plugins: [new wb.optimize.DedupePlugin()]
   };
+  gulp.src(entry[file])
+    .pipe(webpack(cfg))
+    .pipe(gulp.dest('build'))
+    .pipe(uglify({
+      output:{
+        ascii_only:true
+      }
+    }))
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(banner(comment, {
+      pkg: options.pkg
+    }))
+    .pipe(gulp.dest('build'))
 
-  webpack(cfg, function(err, stats) {
-    if (err) throw new gutil.PluginError('webpack:build', err);
-    gutil.log('[webpack:build]', stats.toString({
-      colors: true
-    }));
-
-    // 压缩webpack生成的js文件
-    fs.exists(path.join(__dirname, '../build/' + file +'.js'), function(exists) {
-      if (!exists) {return;}
-      gulp.src('build/' + file +'.js')
-        .pipe(uglify({
-          output: {
-            ascii_only: true
-          }
-        }))
-        .pipe(rename({
-          suffix: '.min'
-        }))
-        .pipe(banner(comment, {
-          pkg: options.pkg
-        }))
-        .pipe(footer('//# sourceMappingURL='+file+'.js.map'))
-        .pipe(gulp.dest('build'));
-      gutil.log(gutil.colors.green('Minify JS: build/'+ file +'.min.js'));
-    });
-  });
+//   webpack(cfg, function(err, stats) {
+//     if (err) throw new gutil.PluginError('webpack:build', err);
+//     gutil.log('[webpack:build]', stats.toString({
+//       colors: true
+//     }));
+//
+//     // 压缩webpack生成的js文件
+//     fs.exists(path.join(__dirname, '../build/' + file +'.js'), function(exists) {
+//       if (!exists) {return;}
+//       gulp.src('build/' + file +'.js')
+//         .pipe(uglify({
+//           output: {
+//             ascii_only: true
+//           }
+//         }))
+//         .pipe(rename({
+//           suffix: '.min'
+//         }))
+//         .pipe(banner(comment, {
+//           pkg: options.pkg
+//         }))
+//         .pipe(footer('//# sourceMappingURL='+file+'.js.map'))
+//         .pipe(gulp.dest('build'));
+//       gutil.log(gutil.colors.green('Minify JS: build/'+ file +'.min.js'));
+//     });
+//   });
 };
