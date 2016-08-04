@@ -10,7 +10,9 @@ var options = {
   main_js: 'index.js',
   main_less: 'index.less',
   main_css: 'index.css',
-  main_html: 'index.html'
+  main_html: 'index.html',
+  doc_config: require('./_docConfig.json'),
+  pkg: pkg
 };
 
 var gulpMap = {};
@@ -26,6 +28,11 @@ gulp.task('default', function() {
     gulpMap['webpack'](options, 'index');
     gulpMap['webpack'](options, 'mIndex');
   });
+});
+
+// 启动server
+gulp.task('doc', function() {
+  gulpMap['doc'](options);
 });
 
 // 启动server

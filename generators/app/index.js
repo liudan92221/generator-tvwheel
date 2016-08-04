@@ -139,6 +139,10 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('bower.json')
       );
       this.fs.copy(
+        this.templatePath('_docConfig.json'),
+        this.destinationPath('docConfig.json')
+      );
+      this.fs.copy(
         this.templatePath('_gitignore'),
         this.destinationPath('.gitignore')
       );

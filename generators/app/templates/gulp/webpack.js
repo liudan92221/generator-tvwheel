@@ -6,8 +6,18 @@ var webpack = require('webpack');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var path = require('path');
+var banner = require('gulp-banner');
 var footer = require('gulp-footer');
 var fs = require('fs');
+
+var comment = '/*\n' +
+  ' * <%= pkg.name %> <%= pkg.version %> <'+(new Date())+'>\n' +
+  ' * <%= pkg.description %>\n' +
+  ' * <%= pkg.author.name %> - <%= pkg.homepage %>\n' +
+  ' *\n' +
+  ' * Copyright 2016, <%= pkg.company %>\n' +
+  ' * Released under the <%= pkg.license %> license.\n' +
+  '*/\n\n';
 
 module.exports = function(options, file) {
   var entry = {};
@@ -60,11 +70,14 @@ module.exports = function(options, file) {
           }
         }))
         .pipe(rename({
-          suffix: '-min'
+          suffix: '.min'
+        }))
+        .pipe(banner(comment, {
+          pkg: options.pkg
         }))
         .pipe(footer('//# sourceMappingURL='+file+'.js.map'))
         .pipe(gulp.dest('build'));
-      gutil.log(gutil.colors.green('Minify JS: build/'+ file +'-min.js'));
+      gutil.log(gutil.colors.green('Minify JS: build/'+ file +'.min.js'));
     });
   });
 };
