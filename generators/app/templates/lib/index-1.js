@@ -22,7 +22,6 @@ export class <%= projectName %> extends Display {
   }
 
   /**
-   * 需重写
    * render 重绘方法
    * @memberOf <%= projectName %>.prototype
    * @method render

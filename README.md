@@ -37,7 +37,7 @@ yo tvwheel           // 初始化一个标准的项目，生成其目录结构
 
 ```bash
 gulp                  // 进行项目构建
-gulp test             // 启动测试文件中测试代码
+// gulp test          // 启动测试文件中测试代码
 (sudo) gulp server    // 启动服务
 gulp doc              // 根据注释生成对应文档
 ```
@@ -49,7 +49,7 @@ gulp doc              // 根据注释生成对应文档
         ├── package.json     // 存放项目基本信息和node的依赖关系配置
         ├── README.md        // 项目说明文档
         ├── index.js         // 入口文件
-        ├── mIndex.js        // 移动端入口文件
+        ├── index.mobile.js  // 移动端入口文件
         ├── doc              // 存放生成项目API文档
         ├── test             // 存放测试文件
         ├── node_modules     // 存放项目的node模块

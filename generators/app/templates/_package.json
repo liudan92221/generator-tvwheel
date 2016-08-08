@@ -1,11 +1,12 @@
 {
-  "name": "@ali/alitv-<%= packageName %>",
+  "name": "<%= packageName %>",
   "version": "<%= version %>",
   "description": "",
   "author": {
     "name": "<%= author %>",
     "email": "<%= email %>"
   },
+  "componentType": "<%= type %>",
   "company": "Alibaba Group",
   "homepage": "",
   "repository": {
@@ -22,7 +23,7 @@
   ],
   "files": [
     "index.js",
-    "mIndex.js",
+    "index.mobile.js",
     "lib/"
   ],
   "dependencies": {

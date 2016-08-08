@@ -119,8 +119,8 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('index.js')
       );
       this.template(
-        this.templatePath('mIndex.js'),
-        this.destinationPath('mIndex.js')
+        this.templatePath('index.mobile.js'),
+        this.destinationPath('index.mobile.js')
       );
       this.fs.copy(
         this.templatePath('gulpfile.js'),
