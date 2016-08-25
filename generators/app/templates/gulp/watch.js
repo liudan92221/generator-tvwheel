@@ -20,8 +20,8 @@ function unRoot() {
 module.exports = function(options) {
   var lib = gulp.watch(['lib/**'], function() {
     unRoot();
-    gulpMap['webpack'](options, 'index');
-    gulpMap['webpack'](options, 'mIndex');
+    gulpMap['webpack'](options, options.fileMain);
+    gulpMap['webpack'](options, options.mobileFileMain);
 
   });
 
@@ -29,16 +29,16 @@ module.exports = function(options) {
     gutil.log(gutil.colors.yellow('File ' + event.path + ' was ' + event.type));
   });
 
-  var index = gulp.watch(['index.js'], function() {
+  var index = gulp.watch([options.fileMain+'.js'], function() {
     unRoot();
-    gulpMap['webpack'](options, 'index');
+    gulpMap['webpack'](options, options.fileMain);
   });
   index.on('change', function(event) {
     gutil.log(gutil.colors.yellow('File ' + event.path + ' was ' + event.type));
   });
-  var mIndex = gulp.watch(['mIndex.js'], function() {
+  var mIndex = gulp.watch([options.mobileFileMain+'.js'], function() {
     unRoot();
-    gulpMap['webpack'](options, 'mIndex');
+    gulpMap['webpack'](options, options.mobileFileMain);
   });
 
   mIndex.on('change', function(event) {

@@ -9,7 +9,7 @@ module.exports = function(options) {
 
   gulp.src('./')
     .pipe(webserver({
-      path: '/de/' + name + '/' + options.version + '/',
+      path: '/' + name + '/' + options.version + '/',
       host: '0.0.0.0',
       port: 80,
       livereload: true,
@@ -22,5 +22,5 @@ module.exports = function(options) {
         next();
       }
     }));
-  gutil.log(gutil.colors.green('http://localhost/de/' + name + '/' + options.version + '/'));
+  gutil.log(gutil.colors.green('http://localhost/' + name + '/' + options.version + '/'));
 };

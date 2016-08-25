@@ -9,40 +9,47 @@ module.exports = yeoman.generators.Base.extend({
   prompting: function () {
     var done = this.async();
     this.pkg = require(path.join(__dirname, '../../package.json'));
+    let noUpdate = null
+    if (process && process.argv && process.argv) {
+      noUpdate = process.argv[3]
+    }
+    if (noUpdate !== '-noupdate') {
+      this.log(
+        chalk.yellow('正在检查更新...')
+      );
 
-    this.log(
-      chalk.yellow('正在检查更新...')
-    );
-
-    urllib.request('http://registry.npmjs.org/generator-tvwheel/latest', function (err, data, res) {
-      if (err || res.statusCode != 200) {
-        this.log(
-          chalk.red('检查更新出错')
-        );
-      } else {
-        data = JSON.parse(data.toString());
-
-        if (data.version !== this.pkg.version) {
+      urllib.request('http://registry.npm.taobao.org/generator-tvwheel/latest', function (err, data, res) {
+        if (err || res.statusCode != 200) {
           this.log(
-            '发现新版本：' + chalk.red(data.version) + ', 当前版本：'+chalk.yellow(this.pkg.version)+'.'
-          );
-          this.log(
-            '版本有更新，建议更新：npm install -g generator-tvwheel'
+            chalk.red('检查更新出错')
           );
         } else {
-          this.log(
-            '当前版本为最新版本'
-          );
+          data = JSON.parse(data.toString());
+
+          if (data.version !== this.pkg.version) {
+            this.log(
+              '发现新版本：' + chalk.red(data.version) + ', 当前版本：'+chalk.yellow(this.pkg.version)+'.'
+            );
+            this.log(
+              '版本有更新，建议更新：npm install -g generator-tvwheel'
+            );
+          } else {
+            this.log(
+              '当前版本为最新版本'
+            );
+          }
         }
-      }
 
-      this.log(yosay(
-        'Welcome to the polished ' + chalk.red('tvwheel') + ' generator!'
-      ));
+        this.log(yosay(
+          'Welcome to the polished ' + chalk.red('tvwheel') + ' generator!'
+        ));
 
+        done();
+
+      }.bind(this));
+    } else {
       done();
-
-    }.bind(this));
+    }
   },
 
   writing: {
@@ -56,14 +63,29 @@ module.exports = yeoman.generators.Base.extend({
 
       var prompts = [
         {
+          type: 'rawlist',
           name: 'type',
-          message: 'Type of Project?(0:普通,1:展示,2:交互)',
+          message: 'Type of Component?',
+          choices: [
+            {
+              name: 'BaseComponent(无界面功能性组件)',
+              value: '0'
+            },
+            {
+              name: 'DisplayComponent(显示UI组件)',
+              value: '1'
+            },
+            {
+              name: 'FocusableComponent(有焦点切换组件,且基于FocusEngine)',
+              value: '2'
+            }
+          ],
           default: '0',
           warning: ''
         },
         {
           name: 'projectName',
-          message: 'Name of Project?',
+          message: 'Name of Component?',
           default: fileName,
           warning: ''
         },
@@ -79,16 +101,16 @@ module.exports = yeoman.generators.Base.extend({
           default: '',
           warning: ''
         },
-        {
-          name: 'groupName',
-          message: 'Group Name:',
-          default: 'de',
-          warning: ''
-        },
+        // {
+        //   name: 'groupName',
+        //   message: 'Group Name:',
+        //   default: 'de',
+        //   warning: ''
+        // },
         {
           name: 'version',
           message: 'Version:',
-          default: '1.0.0',
+          default: '0.0.1',
           warning: ''
         }
       ];
@@ -107,7 +129,7 @@ module.exports = yeoman.generators.Base.extend({
         this.author = props.author;
         this.email = props.email;
         this.version = props.version;
-        this.groupName = props.groupName;
+        // this.groupName = props.groupName;
         cb();
 
       }.bind(this));
@@ -159,6 +181,7 @@ module.exports = yeoman.generators.Base.extend({
       this.mkdir('doc');
       this.mkdir('build');
       this.mkdir('test');
+      this.mkdir('demo');
 
       if (this.type == 1) {
         this.template(

@@ -8,6 +8,8 @@ var pkg = require('./package');
 var options = {
   name: pkg.name,
   version: pkg.version,
+  fileMain: 'index',
+  mobileFileMain: 'index.mobile',
   main_js: 'index.js',
   main_less: 'index.less',
   main_css: 'index.css',
@@ -26,8 +28,9 @@ wrench.readdirSyncRecursive('./gulp').filter(function(file) {
 
 gulp.task('default', function() {
   del(['build'], function() {
-    gulpMap['webpack'](options, 'index');
-    gulpMap['webpack'](options, 'mIndex');
+    gulpMap['webpack'](options, options.fileMain);
+    gulpMap['webpack'](options, options.mobileFileMain);
+    gulpMap['demo']();
   });
 });
 
@@ -44,4 +47,11 @@ gulp.task('server', function() {
 });
 
 // 启动test
-gulpMap['test']();
+gulp.task('test', function() {
+  gulpMap['test']();
+});
+
+// copy demo
+gulp.task('demo', function() {
+  gulpMap['demo']();
+});

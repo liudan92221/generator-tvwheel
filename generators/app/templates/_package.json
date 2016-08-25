@@ -14,7 +14,7 @@
     "url": ""
   },
   "publishConfig": {
-    "registry": "http://registry.npm.alibaba-inc.com"
+    "registry": "http://registry.npmjs.org"
   },
   "main": "index.js",
   "license": "",
