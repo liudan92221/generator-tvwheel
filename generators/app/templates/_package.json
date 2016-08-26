@@ -27,10 +27,9 @@
     "lib/"
   ],
   "dependencies": {
-    "@ali/atv-engine": "~1.1.5",
-    "@ali/alitv-component-base": "~1.0.5",
-    "@ali/alitv-display-base": "~1.0.7",
-    "@ali/alitv-interactive-base": "~1.0.4"
+    "silver-base": "~0.0.1",
+    "silver-display": "~0.0.1",
+    "silver-focusable": "~0.0.1"
   },
   "devDependencies": {
     "babel": "~6.5.2",

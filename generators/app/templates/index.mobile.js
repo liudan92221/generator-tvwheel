@@ -1,5 +1,5 @@
 //import {<%= projectName %>} from './lib/mIndex.js'
 
-//window.tvui = window.tvui || {}
-//window.tvui.<%= projectName %> = <%= projectName %>
+//window.tvcnpt = window.tvcnpt || {}
+//window.tvcnpt.<%= projectName %> = <%= projectName %>
 //module.exports = <%= projectName %>

@@ -1,10 +1,10 @@
-const Display = require('@ali/alitv-display-base')
+const SilverDisplay = require('silver-display')
 
 /**
  * <%= projectName %>
  * @class
  */
-export class <%= projectName %> extends Display {
+export class <%= projectName %> extends SilverDisplay {
   constructor(opt) {
     super(opt)
   }
@@ -22,24 +22,15 @@ export class <%= projectName %> extends Display {
   }
 
   /**
-   * render 重绘方法
+   * renderView 重绘方法
    * @memberOf <%= projectName %>.prototype
    * @method render
    * @param {Node} node initView方法返回的dom对象
    * @param {Object} style 样式参数
    * @param {Object} data 数据参数
    */
-  render(node, style, data) {
+  renderView(node, style, data) {
     node.innerHTML = ''
-  }
-
-  /**
-   * renderCallback 重绘之后调用方法
-   * @memberOf <%= projectName %>.prototype
-   * @method renderCallback
-   */
-  renderCallback() {
-
   }
 
   /**

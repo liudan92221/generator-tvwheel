@@ -1,14 +1,14 @@
-const Interactive = require('@ali/alitv-interactive-base')
+const SilverFocusable = require('silver-focusable')
 
 /**
  * <%= projectName %>
  * @class
  */
-export class <%= projectName %> extends Interactive {
+export class <%= projectName %> extends SilverFocusable {
   constructor(opt) {
     super(opt)
   }
-  
+
   /**
    * initView 模板方法
    * @memberOf <%= projectName %>.prototype
@@ -19,19 +19,19 @@ export class <%= projectName %> extends Interactive {
    */
   initView(style, data) {
     const node = document.createElement('div')
-    node.setAttribute('data-role', 'Widget')
+    node.setAttribute('fe-role', 'Widget')
     return node
   }
 
   /**
-   * render 重绘方法
+   * renderView 重绘方法
    * @memberOf <%= projectName %>.prototype
    * @method render
    * @param {Node} node initView方法返回的dom对象
    * @param {Object} style 样式参数
    * @param {Object} data 数据参数
    */
-  render(node, style, data) {
+  renderView(node, style, data) {
     node.innerHTML = ''
   }
 

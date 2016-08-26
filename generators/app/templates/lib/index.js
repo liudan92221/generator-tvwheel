@@ -1,10 +1,10 @@
-const Component = require('@ali/alitv-component-base')
+const SilverBase = require('silver-base')
 
 /**
  * <%= projectName %>
  * @class 
  */
-export class <%= projectName %> extends Component {
+export class <%= projectName %> extends SilverBase {
   constructor(opt) {
     super(opt)
   }
