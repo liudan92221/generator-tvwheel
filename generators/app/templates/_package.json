@@ -26,11 +26,7 @@
     "index.mobile.js",
     "lib/"
   ],
-  "dependencies": {
-    "silver-base": "~0.0.1",
-    "silver-display": "~0.0.1",
-    "silver-focusable": "~0.0.1"
-  },
+  "dependencies": <%= dependencies %>,
   "devDependencies": {
     "babel": "~6.5.2",
     "babel-core": "~6.7.6",

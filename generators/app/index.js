@@ -28,7 +28,7 @@ module.exports = yeoman.generators.Base.extend({
 
           if (data.version !== this.pkg.version) {
             this.log(
-              '发现新版本：' + chalk.red(data.version) + ', 当前版本：'+chalk.yellow(this.pkg.version)+'.'
+              '发现新版本：' + chalk.red(data.version) + ', 当前版本：' + chalk.yellow(this.pkg.version) + '.'
             );
             this.log(
               '版本有更新，建议更新：npm install -g generator-tvwheel'
@@ -53,7 +53,7 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: {
-    init: function() {
+    init: function () {
 
     },
 
@@ -116,9 +116,9 @@ module.exports = yeoman.generators.Base.extend({
       ];
 
       // your-mojo-name => YourMojoName
-      function parseMojoName(name){
-        return name.replace(/\b(\w)|(-\w)/g,function(m){
-          return m.toUpperCase().replace('-','');
+      function parseMojoName(name) {
+        return name.replace(/\b(\w)|(-\w)/g, function (m) {
+          return m.toUpperCase().replace('-', '');
         });
       }
 
@@ -130,6 +130,25 @@ module.exports = yeoman.generators.Base.extend({
         this.email = props.email;
         this.version = props.version;
         // this.groupName = props.groupName;
+        var base = '~0.0.1'
+        var display = '~0.0.1'
+        var focusable = '~0.0.1'
+        if (props.type == '0') {
+          this.dependencies = '{\n' +
+            '\t\t"silver-base": "' + base + '"\n' +
+            '\t}';
+        } else if (props.type == '1') {
+          this.dependencies = '{\n' +
+            '\t\t"silver-base": "' + base + '",\n' +
+            '\t\t"silver-display": "' + display + '"\n' +
+            '\t}';
+        } else {
+          this.dependencies = '{\n' +
+            '\t\t"silver-base": "' + base + '",\n' +
+            '\t\t"silver-display": "' + display + '",\n' +
+            '\t\t"silver-focusable": "' + focusable + '"\n' +
+            '\t}';
+        }
         cb();
 
       }.bind(this));
