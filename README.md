@@ -40,6 +40,7 @@ gulp                  // 进行项目构建
 // gulp test          // 启动测试文件中测试代码
 (sudo) gulp server    // 启动服务
 gulp doc              // 根据注释生成对应文档
+gulp demo             // demo文件夹中的文件copy到build目录下
 ```
 
 ```bash
