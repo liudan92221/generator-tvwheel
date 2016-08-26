@@ -46,11 +46,6 @@ gulp.task('server', function() {
   gulpMap['watch'](options);
 });
 
-// 启动test
-gulp.task('test', function() {
-  gulpMap['test']();
-});
-
 // copy demo
 gulp.task('demo', function() {
   gulpMap['demo']();
