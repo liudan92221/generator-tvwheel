@@ -7,11 +7,16 @@ var webserver = require('gulp-webserver');
 module.exports = function(options) {
   var name = options.name.replace('@', '');
 
+  var port = 80
+  if (process && process.argv && process.argv[2]) {
+    port = process.argv[2]
+  }
+
   gulp.src('./')
     .pipe(webserver({
       path: '/' + name + '/' + options.version + '/',
       host: '0.0.0.0',
-      port: 80,
+      port: port || 80,
       livereload: true,
       directoryListing: {
         enable: true,

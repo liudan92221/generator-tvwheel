@@ -31,6 +31,8 @@ gulp.task('default', function() {
     gulpMap['webpack'](options, options.fileMain);
     gulpMap['webpack'](options, options.mobileFileMain);
     gulpMap['demo']();
+    gulp.src(['README.md','lib/**/*.js'], {read: false})
+      .pipe(jsdoc(options.doc_config));
   });
 });
 
@@ -43,6 +45,11 @@ gulp.task('doc', function() {
 // 启动server
 gulp.task('server', function() {
   gulpMap['server'](options);
+  gulpMap['watch'](options);
+});
+
+// 启动watch
+gulp.task('watch', function() {
   gulpMap['watch'](options);
 });
 

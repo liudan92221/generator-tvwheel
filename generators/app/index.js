@@ -10,7 +10,7 @@ module.exports = yeoman.generators.Base.extend({
     var done = this.async();
     this.pkg = require(path.join(__dirname, '../../package.json'));
     let noUpdate = null
-    if (process && process.argv && process.argv) {
+    if (process && process.argv && process.argv[3]) {
       noUpdate = process.argv[3]
     }
     if (noUpdate !== '-noupdate') {
