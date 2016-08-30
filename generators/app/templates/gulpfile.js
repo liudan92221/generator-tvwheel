@@ -36,7 +36,7 @@ gulp.task('default', function() {
 
 // 启动server
 gulp.task('doc', function() {
-  gulp.src(['README.md','lib/index.js'], {read: false})
+  gulp.src(['README.md','lib/**/*.js'], {read: false})
     .pipe(jsdoc(options.doc_config));
 });
 
