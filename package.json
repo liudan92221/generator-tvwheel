@@ -1,6 +1,6 @@
 {
   "name": "generator-tvwheel",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",

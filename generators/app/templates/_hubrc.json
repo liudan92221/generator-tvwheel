@@ -1,0 +1,7 @@
+{
+  "preScript": [
+    "gulp",
+    "gulp doc",
+    "gulp demo"
+  ]
+}
