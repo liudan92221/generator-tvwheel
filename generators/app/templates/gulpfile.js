@@ -37,6 +37,12 @@ gulp.task('default', function() {
 });
 
 // 启动server
+gulp.task('b', function() {
+  gulpMap['webpack'](options, options.fileMain);
+  gulpMap['webpack'](options, options.mobileFileMain);
+});
+
+// 启动server
 gulp.task('doc', function() {
   gulp.src(['README.md','lib/**/*.js'], {read: false})
     .pipe(jsdoc(options.doc_config));
