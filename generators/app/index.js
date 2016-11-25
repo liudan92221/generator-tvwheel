@@ -176,8 +176,8 @@ module.exports = yeoman.generators.Base.extend({
         this.destinationPath('package.json')
       );
       this.fs.copy(
-        this.templatePath('_hubrc.json'),
-        this.destinationPath('.hubrc.json')
+        this.templatePath('_hubrc'),
+        this.destinationPath('.hubrc')
       );
       this.fs.copy(
         this.templatePath('_docConfig.json'),
